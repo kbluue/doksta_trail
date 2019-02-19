@@ -29,10 +29,8 @@ var Form = React.createClass({
 
     submitAction: function(e){
 
-        if (this.state.imageRes.length < 1) {
-            console.log("if works");
-            return;}
-        else console.log(this.state.imageRes.length);
+        if (this.state.imageRes.length < 1) return;
+
         var product = {
             id: this.refs.id.value,
             name: this.refs.name.value,

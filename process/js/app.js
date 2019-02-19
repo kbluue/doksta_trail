@@ -17,6 +17,7 @@ var ImageAddInterface = React.createClass({
 
         return (<div>
                     <Form product = {this.state.product}/>
+                    <PVIew product = {this.state.product}/>
                 </div>)
     } //render
 }); //ImageAddInterface
