@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var _ = require('lodash'); 
 
 var Form = require('./Form');
-var PVIew = require('./PView'); 
 
 var ImageAddInterface = React.createClass({
 
@@ -13,11 +12,18 @@ var ImageAddInterface = React.createClass({
         }
     }, //getInitialState
 
+    updateProduct: function(value){
+        this.setState({
+            product: value
+        });
+
+        console.log('product updated');
+    }, //updateProduct
+
     render: function(){
 
         return (<div>
-                    <Form product = {this.state.product}/>
-                    <PVIew product = {this.state.product}/>
+                    <Form product = {this.state.product} updateProduct = {this.updateProduct}/>
                 </div>)
     } //render
 }); //ImageAddInterface

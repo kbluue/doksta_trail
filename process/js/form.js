@@ -4,8 +4,7 @@ var Form = React.createClass({
 
     getInitialState: function(){
         return{
-            product: [],
-            imageRes: this.props.product.color
+            imageRes: []
         }
     }, //getInitialState
 
@@ -29,6 +28,8 @@ var Form = React.createClass({
 
     submitAction: function(e){
 
+        e.preventDefault();
+
         if (this.state.imageRes.length < 1) return;
 
         var product = {
@@ -36,18 +37,14 @@ var Form = React.createClass({
             name: this.refs.name.value,
             category: this.refs.category.value,
             price: this.refs.price.value,
-            desc: this.refs.desc.value
+            desc: this.refs.desc.value,
+            colors: this.state.imageRes
         };
-
-        var temp = this.state.product;
-
-        this.setState({
-            product: temp
-        });
+        
+        this.props.updateProject(product);
 
         //add to db
         console.log("add to db done");
-        e.preventDefault();
     }, //submitAction
 
     render: function(){
