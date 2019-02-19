@@ -29,6 +29,7 @@ var Form = React.createClass({
     submitAction: function(e){
 
         e.preventDefault();
+        console.log("submit action");
 
         if (this.state.imageRes.length < 1) return;
 
@@ -37,11 +38,15 @@ var Form = React.createClass({
             name: this.refs.name.value,
             category: this.refs.category.value,
             price: this.refs.price.value,
-            desc: this.refs.desc.value,
-            colors: this.state.imageRes
+            desc: this.refs.desc.value
         };
-        
-        this.props.updateProject(product);
+
+        var imageRes = this.state.imageRes;
+
+        console.log(product);
+        console.log(imageRes);
+
+        this.props.updateProduct(product, imageRes);
 
         //add to db
         console.log("add to db done");

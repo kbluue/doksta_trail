@@ -3,6 +3,10 @@ body{
     position: relative;
 }
 
+div{
+    position: relative;
+}
+
 input{
     margin: 5px;
     border-bottom-style: solid;
@@ -38,14 +42,30 @@ form{
 }
 
 img{
+    width: 200px;
+    height: 200px;
     margin: 5px;
 }
 
 .box{
-    width: 10px;
-    height: 10px;
+    width: 25px;
+    height: 25px;
 }
 
 .red{
     background: red;
+}
+
+.preview{
+    max-width: 80%;
+    display: -webkit-flex;
+    border-width: 3px;
+    border: slateblue;
+    border-style: dotted;
+    padding: 3px;
+}
+
+.productProps{
+    width: 50%;
+    left: 215px;
 }
