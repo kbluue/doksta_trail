@@ -40,7 +40,7 @@ var PView = React.createClass({
 
         return(
             <div className="preview">
-                <img src = {this.state.visibleColor} id = "img" alt = {this.state.visibleColor.color}/>
+                <img src = {this.state.visibleColor} id = "img" alt = {this.state.visibleColor}/>
                 <div className="productProps">
                     <h2>{this.props.product.name}</h2><br/>
                     <h4>{this.props.product.category}</h4><br/>
