@@ -1,0 +1,51 @@
+body{
+    background-color: turquoise;
+    position: relative;
+}
+
+input{
+    margin: 5px;
+    border-bottom-style: solid;
+}
+
+input[type = text]{
+    width: 250px;
+}
+
+input[type = number], input[id = color]{
+    width: 100px;
+}
+
+input[id=category]{
+    width: 369px;
+}
+
+input:hover{
+    background-color: grey;
+    color: white;
+}
+
+input:hover::-webkit-input-placeholder{
+    color: white;
+}
+
+form{
+    max-width: 80%;
+    border-width: 3px;
+    border: slateblue;
+    border-style: dotted;
+    padding: 3px;
+}
+
+img{
+    margin: 5px;
+}
+
+.box{
+    width: 10px;
+    height: 10px;
+}
+
+.red{
+    background: red;
+}
