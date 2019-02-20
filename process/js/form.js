@@ -4,9 +4,37 @@ var Form = React.createClass({
 
     getInitialState: function(){
         return{
-            imageRes: []
+            imageRes: [],
+            product: {}
         }
     }, //getInitialState
+
+    componentDidUpdate(prevProps, prevState){
+        var change = (this.state.imageRes != prevState.imageRes) || (this.state.product != prevState.product);
+        if (change) this.props.updateProduct(this.state.product, this.state.imageRes);
+    }, //componentDidUpdate
+
+    refreshProduct(){
+        var temp = {
+            id: this.refs.id.value.trim(),
+            name: (this.refs.name.value).trim(),
+            category: this.refs.category.value.trim(),
+            price: this.refs.price.value.trim(),
+            desc: this.refs.desc.value.trim()
+        };
+
+        var control = {
+            id: temp.id === "" ? "----" : temp.id,
+            name : temp.name === "" ? "Product Name" : temp.name,
+            category: temp.category === "" ? "product category" : temp.category,
+            price: temp.price === "" ? "$ ---" : temp.price,
+            desc: temp.desc === "" ? "product description" : temp.desc
+        };
+
+        this.setState({
+            product: control
+        });
+    }, //refreshProduct
 
     addImageRes: function(e){
 
@@ -24,8 +52,6 @@ var Form = React.createClass({
         this.setState({
             imageRes: temp
         });
-
-        this.props.updateProduct(this.props.product, this.state.imageRes);
     }, //addImageRes
 
     submitAction: function(e){
@@ -34,40 +60,12 @@ var Form = React.createClass({
         console.log("submit action");
 
         if (this.state.imageRes.length < 1) return;
+        
+        this.refreshProduct();
 
-        var product = {
-            id: this.refs.id.value,
-            name: this.refs.name.value,
-            category: this.refs.category.value,
-            price: this.refs.price.value,
-            desc: this.refs.desc.value
-        };
-
-        var imageRes = this.state.imageRes;
-
-        console.log(product);
-        console.log(imageRes);
-
-        this.props.updateProduct(product, imageRes);
-
-        //add to db
+        //add to db ** disable form
         console.log("add to db done");
     }, //submitAction
-
-    changeTriggerAction: function(e){
-        console.log(e.target.id);
-        console.log('dfbgiuhsfrg sdfiuhgsfg');
-
-        var temp = {
-            id: this.refs.id.value,
-            name: this.refs.name.value,
-            category: this.refs.category.value,
-            price: this.refs.price.value,
-            desc: this.refs.desc.value
-        };
-
-        this.props.updateProduct(temp, this.state.imageRes);
-    }, //changeTriggerAction
 
     render: function(){
 
@@ -82,12 +80,12 @@ var Form = React.createClass({
         return (
             <form onSubmit={this.submitAction}>
                 <h2>Add New Item</h2>
-                <input id="id" ref="id" onChange = {this.changeTriggerAction} placeholder="id" type="number" maxLength="4" required/>
-                <input id="name" ref="name" onChange = {this.changeTriggerAction} placeholder="product name" type="text" maxLength="20" required/> <br/>
-                <input id="category" ref="category" onChange = {this.changeTriggerAction} placeholder="category" type="text" maxLength="40" required/> <br/>
-                <input id="price" ref="price" onChange = {this.changeTriggerAction} placeholder="price" type="number" maxLength="10" required/> <br/>
-                <input id="desc" ref="desc" onChange = {this.changeTriggerAction} placeholder="description" type="text" maxLength="400" required/><br/>
-                <input id="color" ref="color" onChange = {this.changeTriggerAction} placeholder="color" type="text" autoComplete="additional-name"/>
+                <input id="id" ref="id" onChange = {this.refreshProduct} placeholder="id" type="number" maxLength="4" required/>
+                <input id="name" ref="name" onChange = {this.refreshProduct} placeholder="product name" type="text" maxLength="20" required/> <br/>
+                <input id="category" ref="category" onChange = {this.refreshProduct} placeholder="category" type="text" maxLength="40" required/> <br/>
+                <input id="price" ref="price" onChange = {this.refreshProduct} placeholder="price" type="number" maxLength="10" required/> <br/>
+                <input id="desc" ref="desc" onChange = {this.refreshProduct} placeholder="description" type="text" maxLength="400" required/><br/>
+                <input id="color" ref="color" onChange = {this.refreshProduct} placeholder="color" type="text" autoComplete="additional-name"/>
                 <input id="img_path" ref="img_path" placeholder="image for selected color" type="file"/><br/>
                 <button id="add_btn" onClick={this.addImageRes}>Add Image</button><br/>
                 

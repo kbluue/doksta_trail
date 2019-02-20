@@ -15,8 +15,7 @@ var ImageAddInterface = React.createClass({
                         price: '$price',
                         desc: 'product description'},
 
-            imageRes: [{img_path: 'test', color: 'red'}, 
-                        {img_path: '../../images/wisdompetlogo.svg', color: 'blue'}]
+            imageRes: []
         } 
     }, //getInitialState 
 
@@ -31,10 +30,8 @@ var ImageAddInterface = React.createClass({
 
     render: function(){
 
-        console.log(this.state.product.name);
-
         return (<div>
-                    <Form product = {this.state.product} imageRes = {this.state.imageRes} updateProduct = {this.updateProduct}/>
+                    <Form updateProduct = {this.updateProduct}/>
                     <PView product = {this.state.product} imageRes = {this.state.imageRes}/>
                 </div>)
     } //render
