@@ -16,10 +16,10 @@ var Form = React.createClass({
 
     refreshProduct(){
         var temp = {
-            id: this.refs.id.value.trim(),
+            id: "#" + this.refs.id.value.trim(),
             name: (this.refs.name.value).trim(),
             category: this.refs.category.value.trim(),
-            price: this.refs.price.value.trim(),
+            price: "$ " + this.refs.price.value.trim(),
             desc: this.refs.desc.value.trim()
         };
 
