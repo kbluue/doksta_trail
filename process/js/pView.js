@@ -10,8 +10,6 @@ var PView = React.createClass({
 
     componentDidMount: function(){
 
-        console.log("comDidMo");
-
         if (this.props.imageRes.length  > 0) {
             this.setState({
                 visibleColor: this.props.imageRes[1].img_path
@@ -38,9 +36,10 @@ var PView = React.createClass({
             return (<button onClick = {this.toggleColor} key = {index} id={index} className="box" style={style}></button>)
         }.bind(this));
 
+        var style = { };
+
         return(
-            <div className="preview">
-                <img src = {this.state.visibleColor} id = "img" alt = {this.state.visibleColor}/>
+            <div className="preview" style = {style}>
                 <div className="productProps">
                     <h2>{this.props.product.name}</h2><br/>
                     <h4>{this.props.product.category}</h4><br/>

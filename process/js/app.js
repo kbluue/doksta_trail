@@ -9,11 +9,7 @@ var ImageAddInterface = React.createClass({
 
     getInitialState: function(){
         return{
-            product: {name: 'Product Name', 
-                        id: 'product id',
-                        category: 'product category',
-                        price: '$price',
-                        desc: 'product description'},
+            product: { name: "-"},
 
             imageRes: []
         } 
