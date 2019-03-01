@@ -1,4 +1,5 @@
 var React = require('react');
+var RFR = require('react-file-reader').default;
 
 var Form = React.createClass({
 
@@ -55,11 +56,16 @@ var Form = React.createClass({
             console.log("afterwards temp:// " + temp);
         },false);
 
+        if (this.refs.img_path.value === "") {
+            console.log("kindly include img_path");
+            return;
+        } //log error
+
         console.log("temp:// " + temp);
         var image = {
             color: this.refs.color.value,
-            // img_path: this.refs.img_path.value
-            img_path: temp
+            img_path: this.refs.img_path.value
+            // img_path: temp
         };
 
         console.log(image.color + ' // ' + image.img_path);
@@ -87,6 +93,10 @@ var Form = React.createClass({
         console.log("add to db done");
     }, //submitAction
 
+    RFRTest: function(files){
+        console.log(files)
+    }, //RFRTest
+
     render: function(){
 
         var imageRes = this.state.imageRes.map(function(item, index){
@@ -106,7 +116,7 @@ var Form = React.createClass({
                 $ <input id="price" ref="price" onChange = {this.refreshProduct} placeholder="price" type="number" maxLength="10" required/> <br/>
                 <input id="desc" ref="desc" onChange = {this.refreshProduct} placeholder="description" type="text" maxLength="400" required/><br/>
                 <input id="color" ref="color" onChange = {this.refreshProduct} placeholder="color" type="text" autoComplete="additional-name"/>
-                <input id="img_path" ref="img_path" type="file"/><br/>
+                <RFR handleFiles = {this.RFRTest}><input id="img_path" ref="img_path" type="file"/><br/></RFR>
                 <button id="add_btn" onClick={this.addImageRes}>Add Image</button><br/>
                 
                 <div id="image_res">{imageRes}</div><br/>

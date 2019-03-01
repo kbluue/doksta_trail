@@ -49,7 +49,6 @@ var PView = React.createClass({
                     <div className="desc" id="desc">{this.props.product.desc}</div><br/>
                     <div>{colorBox}</div>
                 </div><br/>
-                
             </div>
         )
     } //render
