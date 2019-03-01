@@ -36,7 +36,9 @@ var PView = React.createClass({
             return (<button onClick = {this.toggleColor} key = {index} id={index} className="box" style={style}></button>)
         }.bind(this));
 
-        var style = { };
+        var style = {
+            
+        };
 
         return(
             <div className="preview" style = {style}>
